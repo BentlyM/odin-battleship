@@ -2,7 +2,8 @@ import './styles/index.js'
 
 function component() {
   const text = 'Hello, WebPack!';
+  console.log('hi');
   return text;
 }
 
-module.exports = component;
+export default component;
