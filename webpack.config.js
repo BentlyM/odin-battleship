@@ -36,6 +36,7 @@ module.exports = {
       {
         test: /\.css$/i,
         use: ['style-loader', 'css-loader'],
+        include: path.resolve(__dirname, 'src/styles'),
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
