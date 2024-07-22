@@ -13,12 +13,13 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: "ToDo's",
+      title: "Battleship Game",
       template: './src/index.html',
       publicPath: './',
     }),
     new CopyPlugin({
       patterns: [
+        { from: './src/styles/', to: 'styles' },
         { from: './src/images', to: 'images' },
       ],
     }),
@@ -43,7 +44,7 @@ module.exports = {
         type: 'asset/resource',
         generator: {
           filename: 'images/[name][ext]',
-        }, // might actually need this for when rendered to javascript
+        },
       },
     ],
   },
