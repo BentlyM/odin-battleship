@@ -4,7 +4,7 @@ module.exports = {
   },
   moduleFileExtensions: ['js', 'json'],
   moduleNameMapper: {
-    '\\.(css|less)$': '<rootDir>/node_modules/identity-obj-proxy',
+    '\\.(css|less)$': 'identity-obj-proxy',
   },
   transformIgnorePatterns: ['/node_modules/'],
 };
