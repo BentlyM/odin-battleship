@@ -24,3 +24,10 @@ what determines how the area exist?:
   - height and width should match
   - arena should have empty squares
   - when a empty square is clicked must register it being missed 
+
+what determines if an attack has accrued?:
+  - the has be clicked and return the position of tile
+  - the tile should turn to white peg if missed
+  - the tile should turn to red peg if hit
+  - the tile should remain its original color if not attacked
+  
