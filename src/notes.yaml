@@ -1,0 +1,15 @@
+What is battleship?:
+  - battle ship is a game wheres two players try to guess the position of the opposites teams ship by throwing projectiles at them eventually resulting in it sinking
+
+what determines a ship?:
+  - a ship can be hit
+  - a ship can only be a certain length
+  - a ship is capable of sinking
+  - a ship has direction
+    - possibly begin with a single tile
+    - then add more tiling after
+
+what determines the arena?:
+  - the arena should be at least 10 by 10 ( some determined sized)
+  - the arena should hold ships within it
+  - the arena should have a grid for which the arena size is called and ships can be placed
