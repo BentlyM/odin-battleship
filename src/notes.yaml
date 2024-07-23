@@ -13,3 +13,14 @@ what determines the arena?:
   - the arena should be at least 10 by 10 ( some determined sized)
   - the arena should hold ships within it
   - the arena should have a grid for which the arena size is called and ships can be placed
+
+what determines how the ship exist within the area?: 
+  - should not exceed the board boundaries
+  - should not collide with other ships
+  - should be capable of exist in both x and y directions
+  - should display if ship has been attacked
+
+what determines how the area exist?:
+  - height and width should match
+  - arena should have empty squares
+  - when a empty square is clicked must register it being missed 
