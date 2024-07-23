@@ -1,5 +1,11 @@
-import component from "."
+import component from '.';
 
-test('component Exist', ()=> {
-    expect(component()).toBe('Hello, WebPack!')
-})
+describe('Component', () => {
+  it('should exist', () => {
+    expect(component()).toBe('Hello, WebPack!');
+  });
+
+  it('should return a string', () => {
+    expect(typeof component()).toBe('string');
+  });
+});
