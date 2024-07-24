@@ -43,16 +43,6 @@ describe('My GameBoard', () => {
             x: 3,
             y: 5,
           },
-          {
-            isHit: false,
-            x: 4,
-            y: 5,
-          },
-          {
-            isHit: false,
-            x: 5,
-            y: 5,
-          }
         ],
       },
     ];
