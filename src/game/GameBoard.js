@@ -6,8 +6,6 @@ class GameBoard {
   }
 
   placeShip(Ship, x, y, orientation) {
-    let result;
-
     if (x + Ship.length > this.size || y + Ship.length > this.size)
       return new Error('Ship exceeds board boundaries');
 
@@ -24,29 +22,18 @@ class GameBoard {
     for (let i = 0; i < Ship.length; i++) {
       if (orientation == 'horizontal') {
         this.board[x + i][y] = Ship;
-        result = this.trackShipPosition(this.board, Ship);
-        Ship.portions[i]['x'] = result[0];
-        Ship.portions[i]['y'] = result[1];
+        Ship.portions[i]['x'] = x + i;
+        Ship.portions[i]['y'] = y;
       } else {
         this.board[x][y + i] = Ship;
-        result = this.trackShipPosition(this.board, Ship);
-        Ship.portions[i]['x'] = result[0];
-        Ship.portions[i]['y'] = result[1];
+        Ship.portions[i]['x'] = x;
+        Ship.portions[i]['y'] = y + i;
       }
     }
 
     this.ships.push(Ship);
 
     return 'success';
-  }
-
-  trackShipPosition(board, currentShipPortion) {
-    for (let i = 0; i < board.length; i++) {
-      let index = board[i].indexOf(currentShipPortion);
-      if (index > -1) {
-        return [i, index];
-      }
-    }
   }
 
   printBoard() {
