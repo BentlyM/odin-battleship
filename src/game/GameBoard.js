@@ -36,6 +36,9 @@ class GameBoard {
     return 'success';
   }
 
+  receiveAttack(x, y) {
+  }
+
   printBoard() {
     for (let i = 0; i < this.size; i++) {
       const rows = [];

@@ -18,13 +18,13 @@ describe('My ship', () => {
 });
 
 describe('My GameBoard', () => {
+  const arena = new GameBoard();
+
   it('is 10 rows long', () => {
-    const arena = new GameBoard();
     expect(arena.printBoard().length).toBe(10);
   });
 
   it('is able to dock ship in ships', () => {
-    const arena = new GameBoard();
     const expected = [{ Sunk: false, hits: 0, length: null, portions: [] }];
     arena.placeShip(new Ship());
 
@@ -32,7 +32,6 @@ describe('My GameBoard', () => {
   });
 
   it('is able to see Portions of ships', () => {
-    const arena = new GameBoard();
     const expected = [
       {
         Sunk: false,
@@ -60,6 +59,35 @@ describe('My GameBoard', () => {
     arena.placeShip(new Ship(3), 3, 5, 'horizontal');
     expect(arena.ships).toEqual(expect.arrayContaining(expected));
   });
+
+  test('is able to receive attack', () => {
+    const expected = [
+      {
+        Sunk: false,
+        hits: 0,
+        length: 3,
+        portions: [
+          {
+            isHit: true,
+            x: 3,
+            y: 5,
+          },
+          {
+            isHit: false,
+            x: 4,
+            y: 5,
+          },
+          {
+            isHit: false,
+            x: 5,
+            y: 5,
+          }
+        ],
+      },
+    ];
+    arena.placeShip(new Ship(3), 3, 5, 'horizontal');
+    expect(arena.receiveAttack(3 , 5)).toEqual(expect.arrayContaining(expected));    
+   })
 });
 
 describe('My Board', () => {
