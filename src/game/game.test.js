@@ -26,9 +26,10 @@ describe('My GameBoard', () => {
 
   it('is able to dock ship in ships', () => {
     const expected = [{ Sunk: false, hits: 0, length: null, portions: [] }];
-    arena.placeShip(new Ship());
+    const arena2 = new GameBoard();
+    arena2.placeShip(new Ship());
 
-    expect(arena.ships).toEqual(expect.arrayContaining(expected));
+    expect(arena2.ships).toEqual(expect.arrayContaining(expected));
   });
 
   it('is able to see Portions of ships', () => {
