@@ -4,14 +4,6 @@ class Ship {
         this.hits = 0;
         this.Sunk = false;
         this.portions = []
-
-        for(let i = 0; i < length; i++){
-            this.portions.push({
-                x: null,
-                y: null,
-                isHit: false
-            })
-        }
     }
 
     hit(){
