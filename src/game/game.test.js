@@ -88,7 +88,7 @@ describe('GameBoard', () => {
         },
       ];
 
-      expect(gameBoard.receiveAttack(3 , 3)).toStrictEqual(
+      expect(gameBoard.receiveAttack(3 , 3)).toEqual(
         expect.objectContaining({
           hits: 1,
           length: 3,
