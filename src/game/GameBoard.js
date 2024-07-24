@@ -10,6 +10,15 @@ class GameBoard {
   }
 
   receiveAttack(x , y){
+    const hitShip = this.ships.find(obj => {
+      return obj.portions[0]['x'] == x && obj.portions[0]['y'] == y;
+    })
+    
+    if (!hitShip) return [x , y]; // instead of return miss it can just return x and y 
+    hitShip.portions[0].isHit = true;
+    hitShip.hit(); 
+ 
+    return hitShip;
 
   }
 
@@ -51,7 +60,7 @@ class GameBoard {
       ship.portions.push(shipPortion);
     }
 
-    return 'success';
+    return "success";
   }
 }
 

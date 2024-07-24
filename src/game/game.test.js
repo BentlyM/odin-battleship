@@ -34,44 +34,77 @@ describe('GameBoard', () => {
     });
   });
 
-  describe('placeShip', ()=>{
-    test('is able sail within board', () => { 
+  describe('placeShip', () => {
+    it('is able sail within board', () => {
       const gameBoard = new GameBoard();
       const ship = new Ship(3);
+
+      expect(gameBoard.placeShip(ship.length, 2, 3, 'horizontal')).toEqual(
+        'success'
+      );
+    });
+
+    it('is able to be attacked', () => {
+      const gameBoard = new GameBoard();
+      const ship = new Ship(3);
+      gameBoard.placeShip(ship.length, 2, 3, 'horizontal');
+
       const expected = [
         {
           hits: 0,
           length: 3,
-          portions: [{
-          isHit: false,
-          x: 2,
-          y: 3
-        }],
-          Sunk: false
-        }, {
+          portions: [
+            {
+              isHit: false,
+              x: 2,
+              y: 3,
+            },
+          ],
+          Sunk: false,
+        },
+        {
           hits: 0,
           length: 3,
-          portions: [{
-          isHit: false,
-          x: 3,
-          y: 3
-        }],
-          Sunk: false
-        }, {
+          portions: [
+            {
+              isHit: false,
+              x: 3,
+              y: 3,
+            },
+          ],
+          Sunk: false,
+        },
+        {
           hits: 0,
           length: 3,
-          portions: [{
-          isHit: false,
-          x: 4,
-          y: 3
-        }],
-          Sunk: false
-        }
-      ]
+          portions: [
+            {
+              isHit: false,
+              x: 4,
+              y: 3,
+            },
+          ],
+          Sunk: false,
+        },
+      ];
 
-      expect(gameBoard.placeShip(ship.length, 2, 3, "horizontal")).toEqual('success');
-      expect(gameBoard.ships).toEqual(expect.arrayContaining(expected));
-     })
-  })
+      expect(gameBoard.receiveAttack(3 , 3)).toStrictEqual(
+        expect.objectContaining({
+          hits: 1,
+          length: 3,
+          portions: [
+            {
+              isHit: true,
+              x: 3, 
+              y: 3,
+            },
+          ],
+          Sunk: false,
+        })
+      );
 
+      expect(gameBoard.receiveAttack()).toStrictEqual([undefined , undefined])
+      expect(gameBoard.receiveAttack(5 , 5)).toStrictEqual([5 , 5])
+    });
+  });
 });
