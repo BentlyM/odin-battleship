@@ -7,11 +7,64 @@
   </head>
   <body>
     <main class="main-sect">
-      <h3 class="title" id="main-title">Battleship</h3>
-      <div><button></button></div>
+      <h2 class="title" id="main-title">Battleship</h2>
+      <div class="info">
+        <button id="play-btn">Play & Randomize</button>
+        <ul class="battleship-info">
+          <li class="detail"><div class="info-box" id="green-box"></div>= Hit</li>
+          <li class="detail"><div class="info-box" id="red-box"></div>= Miss</li>
+          <li class="detail"><div class="info-box" id="user-box"></div>Untouched</li>
+        </ul>
+      </div>
       <div class="container">
-        <div class="game-board"></div>
-        <div class="game-board"></div>
+        <div class="game-warp">
+          <h3 class="gameboard-title">Player Board</h3>
+          <div class="game-board">
+            <div class="table-div">
+              <table>
+                <tbody class="board" id="player-board">
+                  <tr>
+                    <th class="tableHeader corner"></th>
+                    <th class="tableHeader">A</th>
+                    <th class="tableHeader">B</th>
+                    <th class="tableHeader">C</th>
+                    <th class="tableHeader">D</th>
+                    <th class="tableHeader">E</th>
+                    <th class="tableHeader">F</th>
+                    <th class="tableHeader">G</th>
+                    <th class="tableHeader">H</th>
+                    <th class="tableHeader">I</th>
+                    <th class="tableHeader">J</th>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="game-warp">
+          <h3 class="gameboard-title">Bot Board</h3>
+          <div class="game-board">
+            <div class="table-div">
+              <table>
+                <tbody class="board" id="bot-board">
+                  <tr>
+                    <th class="tableHeader corner"></th>
+                    <th class="tableHeader">A</th>
+                    <th class="tableHeader">B</th>
+                    <th class="tableHeader">C</th>
+                    <th class="tableHeader">D</th>
+                    <th class="tableHeader">E</th>
+                    <th class="tableHeader">F</th>
+                    <th class="tableHeader">G</th>
+                    <th class="tableHeader">H</th>
+                    <th class="tableHeader">I</th>
+                    <th class="tableHeader">J</th>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
       </div>
     </main>
   </body>
