@@ -1,13 +1,31 @@
 /* styles.css */
 
 body {
+  padding: 0px;
+  margin: 0px;
+  height: 100vh;
   font-family: Arial, sans-serif;
   background-color: #f0f0f0;
 }
 
+#main-title {
+  text-align: center;
+}
+
+.main-sect {
+  height: 100%;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 50%;
+}
+
 .game-board {
-  width: 400px;
-  height: 400px;
+  width: 50%;
+  height: 50%;
   border: 1px solid #ccc;
-  margin: 20px auto;
 }

@@ -1,8 +1,9 @@
 import './styles/index.js'
+import { Play } from './game/Game.js';
 
-function component() {
-  const text = 'Hello, WebPack!';
-  return text;
-}
+const init = (()=>{
+  Play();
+})();
 
-export default component;
+
+export default init;
