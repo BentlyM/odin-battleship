@@ -4,9 +4,9 @@
  * @param {Object} board - The game board object.
  */
 
-export const showBoard = (board) => {
-    const boardElement = document.querySelector(`#${board.id}`);
-    const boardData = board.Control.board;
+export const showBoard = (boardConfig) => {
+    const boardElement = document.querySelector(`#${boardConfig.id}`);
+    const boardData = boardConfig.Control.board;
     let count = 1;
   
     boardData.forEach((row, rowIndex) => {
@@ -21,7 +21,7 @@ export const showBoard = (board) => {
         const gridItem = document.createElement('td');
         gridRow.appendChild(gridItem);
 
-        (board.id === 'player-board') ? gridItem.classList.add('user-cell') : gridItem.classList.add('bot-cell');
+        (boardConfig.id === 'player-board') ? gridItem.classList.add('user-cell') : gridItem.classList.add('bot-cell');
         
         gridItem.setAttribute('data-x' , rowIndex)
         gridItem.setAttribute('data-y' , columnIndex)
