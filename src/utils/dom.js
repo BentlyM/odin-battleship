@@ -20,6 +20,8 @@ export const showBoard = (board) => {
       row.forEach((cell, columnIndex) => {
         const gridItem = document.createElement('td');
         gridRow.appendChild(gridItem);
+
+        (board.id === 'player-board') ? gridItem.classList.add('user-cell') : gridItem.classList.add('bot-cell');
         
         gridItem.setAttribute('data-x' , rowIndex)
         gridItem.setAttribute('data-y' , columnIndex)
