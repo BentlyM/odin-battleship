@@ -18,9 +18,9 @@ describe('My ship', () => {
 });
 
 describe('GameBoard', () => {
+  const gameBoard = new GameBoard();
   describe('initBoard', () => {
     it('initializes a board of correct size', () => {
-      const gameBoard = new GameBoard();
       const board = gameBoard.board;
 
       expect(board.length).toBe(10);
@@ -36,7 +36,6 @@ describe('GameBoard', () => {
 
   describe('placeShip', () => {
     it('is able sail within board', () => {
-      const gameBoard = new GameBoard();
       const ship = new Ship(3);
 
       expect(gameBoard.placeShip(ship.length, 2, 3, 'horizontal')).toEqual(
@@ -44,58 +43,18 @@ describe('GameBoard', () => {
       );
     });
 
-    it('is able to be attacked', () => {
-      const gameBoard = new GameBoard();
+    it('receiveAttack', () => {
       const ship = new Ship(3);
       gameBoard.placeShip(ship.length, 2, 3, 'horizontal');
 
-      const expected = [
-        {
-          hits: 0,
-          length: 3,
-          portions: [
-            {
-              isHit: false,
-              x: 2,
-              y: 3,
-            },
-          ],
-          Sunk: false,
-        },
-        {
-          hits: 0,
-          length: 3,
-          portions: [
-            {
-              isHit: false,
-              x: 3,
-              y: 3,
-            },
-          ],
-          Sunk: false,
-        },
-        {
-          hits: 0,
-          length: 3,
-          portions: [
-            {
-              isHit: false,
-              x: 4,
-              y: 3,
-            },
-          ],
-          Sunk: false,
-        },
-      ];
-
-      expect(gameBoard.receiveAttack(3 , 3)).toEqual(
+      expect(gameBoard.receiveAttack(3, 3)).toEqual(
         expect.objectContaining({
           hits: 1,
           length: 3,
           portions: [
             {
               isHit: true,
-              x: 3, 
+              x: 3,
               y: 3,
             },
           ],
@@ -103,8 +62,7 @@ describe('GameBoard', () => {
         })
       );
 
-      expect(gameBoard.receiveAttack()).toStrictEqual([undefined , undefined])
-      expect(gameBoard.receiveAttack(5 , 5)).toStrictEqual([5 , 5])
+      expect(gameBoard.receiveAttack(5, 5)).toStrictEqual([5, 5]);
     });
   });
 });

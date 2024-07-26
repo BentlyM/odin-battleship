@@ -13,12 +13,14 @@ what determines the arena?:
   - the arena should be at least 10 by 10 ( some determined sized)
   - the arena should hold ships within it
   - the arena should have a grid for which the arena size is called and ships can be placed
+    - or be assigned automatically and orientation be random 
 
 what determines how the ship exist within the area?: 
   - should not exceed the board boundaries
   - should not collide with other ships
-  - should be capable of exist in both x and y directions
+  - should be capable of existing in both x and y directions
   - should display if ship has been attacked
+  - should display if ship has been missed
 
 what determines how the area exist?:
   - height and width should match
@@ -30,4 +32,20 @@ what determines if an attack has accrued?:
   - the tile should turn to white peg if missed
   - the tile should turn to red peg if hit
   - the tile should remain its original color if not attacked
+  
+how will the opponents engage?: 
+  - opposing players can not see each others board
+  - opposing players can see there own board
+
+how will you determine how many ships are allowed on the board?:
+  - ill make it random prob between 3 and 5 ships each side
+will there be equal amount of ships on each side?:
+    - yes they will have the same amount of ships and share the same value of random in regards to that
+will the ships share the same length on each corresponding grid?:
+  - no the player nor the bot will share the same ship sizes
+    - tho the ships can not exceed a length of 4
+
+
+CurrentBug:
+  - ship portion are within ships instead of entire ship ( keep )
   
