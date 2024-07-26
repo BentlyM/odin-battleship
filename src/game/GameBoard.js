@@ -49,6 +49,8 @@ class GameBoard {
       }
     }
 
+    const completeShip = [];
+
     for (let i = 0; i < shipLength; i++) {
       const ship = new Ship(shipLength);
       const shipPortion = { isHit: false, x: null, y: null };
@@ -62,10 +64,11 @@ class GameBoard {
       }
 
       this.ships.push(ship);
+      completeShip.push(ship);
       ship.portions.push(shipPortion);
     }
 
-    return 'success';
+    return completeShip;
   }
 }
 

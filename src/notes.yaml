@@ -44,8 +44,12 @@ will there be equal amount of ships on each side?:
 will the ships share the same length on each corresponding grid?:
   - no the player nor the bot will share the same ship sizes
     - tho the ships can not exceed a length of 4
+    - ships can not fall short of 2
 
 
 CurrentBug:
   - ship portion are within ships instead of entire ship ( keep )
-  
+  - theres a little change this will happen but if all the values match javascript may place less ships then expected 
+
+
+const shipIndex = (`[data-x='${segment.portions[0]['x']}'][data-y='${segment.portions[0]['y']}']`)

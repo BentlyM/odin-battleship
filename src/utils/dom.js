@@ -28,3 +28,23 @@ export const showBoard = (boardConfig) => {
       });
     });
   };
+
+// ...
+
+export const showShip = (deployed, opponent) => {
+  const currentOpponent = document.querySelector(`#${opponent.id}`);
+
+  deployed.forEach(vessel => {
+    vessel.forEach(segment => {
+      const row = segment.portions[0]['x'];
+      const col = segment.portions[0]['y'];
+      const cell = currentOpponent.querySelector(`[data-x='${row}'][data-y='${col}']`);
+
+      console.log(cell);
+
+      if (cell) {
+        cell.style.backgroundColor = 'gray'; // Replace with your desired color
+      }
+    });
+  });
+};

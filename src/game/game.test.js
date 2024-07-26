@@ -37,10 +37,30 @@ describe('GameBoard', () => {
   describe('placeShip', () => {
     it('is able sail within board', () => {
       const ship = new Ship(3);
+      const expected = [
+        {
+          Sunk: false,
+          hits: 0,
+          length: 3,
+          portions: [{ isHit: false, x: 2, y: 3 }],
+        },
+        {
+          Sunk: false,
+          hits: 0,
+          length: 3,
+          portions: [{ isHit: false, x: 3, y: 3 }],
+        },
+        {
+          Sunk: false,
+          hits: 0,
+          length: 3,
+          portions: [{ isHit: false, x: 4, y: 3 }],
+        },
+      ];
 
-      expect(gameBoard.placeShip(ship.length, 2, 3, 'horizontal')).toEqual(
-        'success'
-      );
+      expect(
+        gameBoard.placeShip(ship.length, 2, 3, 'horizontal')
+      ).toStrictEqual(expect.arrayContaining(expected));
     });
 
     it('receiveAttack', () => {
