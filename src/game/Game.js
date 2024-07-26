@@ -13,6 +13,7 @@ export const Play = () => {
   showBoard(User);
 
   const userDeployed = customShips(User.Control);
+  console.log(userDeployed);
   showShip(userDeployed , User);
 
   return {};

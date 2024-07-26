@@ -40,8 +40,6 @@ export const showShip = (deployed, opponent) => {
       const col = segment.portions[0]['y'];
       const cell = currentOpponent.querySelector(`[data-x='${row}'][data-y='${col}']`);
 
-      console.log(cell);
-
       if (cell) {
         cell.style.backgroundColor = 'gray'; // Replace with your desired color
       }

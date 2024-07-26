@@ -1,3 +1,14 @@
+export const getRandomNumber = (min, max) =>
+  Math.floor(Math.random() * (max - min + 1)) + min;
+
+export const shuffle = (array) => {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+};
+
 export const customShips = (render) => {
   const SHIP_AMOUNT_MIN = 3;
   const SHIP_AMOUNT_MAX = 5;
@@ -15,11 +26,10 @@ export const customShips = (render) => {
     const shipCoordsY = getRandomNumber(0, GRID_SIZE - 1);
     const shipOrientation = getRandomNumber(0, DIRECTIONS.length - 1);
 
-    deployedShips.push(render.placeShip(shipLength, shipCoordsX, shipCoordsY, DIRECTIONS[shipOrientation]));
+    let currentShip = render.placeShip(shipLength, shipCoordsX, shipCoordsY, DIRECTIONS[shipOrientation]);
+
+    deployedShips.push((currentShip) );
   }
 
   return deployedShips;
 };
-
-const getRandomNumber = (min, max) =>
-  Math.floor(Math.random() * (max - min + 1)) + min;

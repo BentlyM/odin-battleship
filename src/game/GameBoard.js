@@ -1,3 +1,4 @@
+import { getRandomNumber , shuffle } from '../utils/random';
 import Ship from './Ship';
 
 class GameBoard {
@@ -25,8 +26,15 @@ class GameBoard {
   }
 
   placeShip(shipLength, x, y, orientation) {
-    if (x + shipLength > this.size || y + shipLength > this.size)
-      return new Error('Ship exceeds board boundaries');
+    if (x + shipLength > this.size || y + shipLength > this.size) {
+      console.log(`Ship exceeds boundaries, rotating...`);
+      orientation = shuffle(['horizontal', 'vertical'])[0];
+      if (orientation === 'horizontal') {
+        x = getRandomNumber(0, this.size - shipLength);
+      } else {
+        y = getRandomNumber(0, this.size - shipLength);
+      }
+    }
 
     if (orientation === undefined)
       return new Error(`NO ORIENTATION ASSIGNED returning ${orientation}`);
