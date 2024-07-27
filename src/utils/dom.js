@@ -40,7 +40,7 @@ export const showShip = (deployed, opponent) => {
       const col = segment.portions[0]['y'];
       const cell = currentOpponent.querySelector(`[data-x='${row}'][data-y='${col}']`);
 
-      if (cell) {
+      if (cell && opponent.id == 'player-board') {
         cell.style.backgroundColor = 'gray'; // Replace with your desired color
       }
     });

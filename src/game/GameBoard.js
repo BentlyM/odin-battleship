@@ -1,4 +1,4 @@
-import { getRandomNumber , shuffle } from '../utils/random';
+import { getRandomNumber, shuffle } from '../utils/random';
 import Ship from './Ship';
 
 class GameBoard {
@@ -39,13 +39,23 @@ class GameBoard {
     if (orientation === undefined)
       return new Error(`NO ORIENTATION ASSIGNED returning ${orientation}`);
 
-    for (let i = 0; i < shipLength; i++) {
-      if (orientation === 'horizontal') {
-        if (this.board[x + i][y] != '')
-          return new Error('ship overlaps with existing ship (x)');
-      } else if (orientation === 'vertical') {
-        if (this.board[x][y + i] != '')
-          return new Error('ship overlaps with existing ship (y)');
+    try {
+      for (let i = 0; i < shipLength; i++) {
+        if (orientation === 'horizontal') {
+          if (this.board[x + i][y] != '')
+            throw new Error('ship overlaps with existing ship (x)');
+        } else if (orientation === 'vertical') {
+          if (this.board[x][y + i] != '')
+            throw new Error('ship overlaps with existing ship (y)');
+        }
+      }
+    } catch (e) {
+      if(e){
+        console.log(`${e} refactoring...`)
+        const newX = getRandomNumber(0, this.size - shipLength);
+        const newY = getRandomNumber(0, this.size - shipLength);
+
+        this.placeShip(shipLength , newX , newY, 'vertical');
       }
     }
 
