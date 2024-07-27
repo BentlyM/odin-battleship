@@ -16,7 +16,7 @@ export const Play = () => {
   showBoard(Bot);
   customShips(Bot.Control);
 
-  hitOrMiss(Bot.Control , User.Control); // for dom allows player to select item of board and hit or miss lol   
+  hitOrMiss(Bot.Control , User.Control);    
 
   return {};
 };

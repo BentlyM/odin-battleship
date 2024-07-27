@@ -4,6 +4,8 @@
  * @param {Object} boardConfig - The game board object.
  */
 
+import { getRandomNumber } from "./random";
+
 export const showBoard = (boardConfig) => {
     const boardElement = document.querySelector(`#${boardConfig.id}`);
     const boardData = boardConfig.Control.board;
@@ -48,12 +50,17 @@ export const showShip = (deployed, opponent) => {
 };
 
 export const hitOrMiss = (bot , player) => {
-  const gridItems = document.querySelectorAll('.bot-cell');
+  const botUnit = document.querySelectorAll('.bot-cell');
+  const playerUnit = document.querySelectorAll('.player-cell');
 
-  gridItems.forEach(item => {
+  botUnit.forEach(item => {
     item.addEventListener('click', (e)=>{
       const attack = attackHandler(e.target);
       const attackState = bot.receiveAttack(attack.x , attack.y);
+
+      if(e.target.style.backgroundColor === 'red' || e.target.style.backgroundColor === 'green') return;
+      
+      botTurn(player);
 
       if(attackState.miss === true){
         e.target.style.backgroundColor = 'red';
@@ -62,6 +69,25 @@ export const hitOrMiss = (bot , player) => {
       }
     })
   })
+}
+
+const botTurn = (player) => {
+  
+    const coords = { x : Number , y : Number};
+    coords['x'] = getRandomNumber(0 , 9);
+    coords['y'] = getRandomNumber(0 , 9);
+
+    const attackState = player.receiveAttack(coords.x , coords.y);
+
+    const item = document.querySelector(`[data-x='${coords.x}'][data-y='${coords.y}']`)
+
+    if(item.style.backgroundColor === 'red' || item.style.backgroundColor === 'green') { botTurn(player);};
+
+    if(attackState.miss == true){
+      item.style.backgroundColor = 'red';
+    }else{
+      item.style.backgroundColor = 'green';
+    }
 
 }
 
