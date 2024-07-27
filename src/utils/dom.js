@@ -1,7 +1,7 @@
 /**
  * Renders the game board in the DOM.
  * 
- * @param {Object} board - The game board object.
+ * @param {Object} boardConfig - The game board object.
  */
 
 export const showBoard = (boardConfig) => {
@@ -46,3 +46,28 @@ export const showShip = (deployed, opponent) => {
     });
   });
 };
+
+export const hitOrMiss = (bot , player) => {
+  const gridItems = document.querySelectorAll('.bot-cell');
+
+  gridItems.forEach(item => {
+    item.addEventListener('click', (e)=>{
+      const attack = attackHandler(e.target);
+      const attackState = bot.receiveAttack(attack.x , attack.y);
+
+      if(attackState.miss === true){
+        e.target.style.backgroundColor = 'red';
+      }else{
+        e.target.style.backgroundColor = 'green';
+      }
+    })
+  })
+
+}
+
+const attackHandler = (cell) => {
+  const x = cell.getAttribute("data-x");
+  const y = cell.getAttribute("data-y")
+
+  return {x , y};
+}

@@ -13,15 +13,19 @@ class GameBoard {
   receiveAttack(x, y) {
     if (x >= this.size || y >= this.size)
       return new Error('Attack exceeds board boundaries');
-
-    const hitShip = this.ships.find((obj) => {
+  
+    const hitShipIndex = this.ships.findIndex((obj) => {
       return obj.portions[0]['x'] == x && obj.portions[0]['y'] == y;
     });
-
-    if (!hitShip) return [x, y]; // instead of return miss it can just return x and y
+  
+    if (hitShipIndex === -1) return { x, y, miss: true };
+  
+    const hitShip = this.ships[hitShipIndex];
     hitShip.portions[0].isHit = true;
     hitShip.hit();
-
+  
+    // prob gonna have to add a checkWin() in here at some point possible
+  
     return hitShip;
   }
 

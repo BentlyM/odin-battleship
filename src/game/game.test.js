@@ -82,7 +82,7 @@ describe('GameBoard', () => {
         })
       );
 
-      expect(gameBoard.receiveAttack(5, 5)).toStrictEqual([5, 5]);
+      expect(gameBoard.receiveAttack(5, 5)).toStrictEqual({"x": 5, "y": 5, 'miss': true});
     });
   });
 });

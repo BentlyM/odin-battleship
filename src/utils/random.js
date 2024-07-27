@@ -26,7 +26,7 @@ export const customShips = (render) => {
     const shipCoordsY = getRandomNumber(0, GRID_SIZE - 1);
     const shipOrientation = getRandomNumber(0, DIRECTIONS.length - 1);
 
-    let currentShip = render.placeShip(shipLength, shipCoordsX, shipCoordsY, DIRECTIONS[shipOrientation]);
+    const currentShip = render.placeShip(shipLength, shipCoordsX, shipCoordsY, DIRECTIONS[shipOrientation]);
 
     deployedShips.push((currentShip) );
   }
