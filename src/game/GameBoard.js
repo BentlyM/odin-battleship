@@ -98,7 +98,7 @@ class GameBoard {
       ship.portions.push(shipPortion);
     }
 
-    return this.ships;
+    return this.ships; // why are you doing this? 
   }
 
   getHitShip(x, y) {
