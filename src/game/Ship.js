@@ -14,7 +14,7 @@ class Ship {
     }
 
     isSunk(){
-        return this.Sunk;
+        return this.portions.every((portion) => portion.isHit) || this.Sunk;
     }
 }
 

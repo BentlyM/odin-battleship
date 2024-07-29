@@ -35,15 +35,17 @@ export const showBoard = (boardConfig) => {
 
 export const showShip = (deployed, opponent) => {
   const currentOpponent = document.querySelector(`#${opponent.id}`);
-
+  
   deployed.forEach(vessel => {
     vessel.forEach(segment => {
-      const row = segment.portions[0]['x'];
-      const col = segment.portions[0]['y'];
-      const cell = currentOpponent.querySelector(`[data-x='${row}'][data-y='${col}']`);
-
-      if (cell && opponent.id == 'player-board') {
-        cell.style.backgroundColor = 'gray'; // Replace with your desired color
+      for(let i = 0; i < segment.portions.length; i++){
+        const row = segment.portions[i]['x'];
+        const col = segment.portions[i]['y'];
+        const cell = currentOpponent.querySelector(`[data-x='${row}'][data-y='${col}']`);
+  
+        if (cell && opponent.id == 'player-board') {
+          cell.style.backgroundColor = 'gray'; // Replace with your desired color
+        }
       }
     });
   });
@@ -62,7 +64,7 @@ export const hitOrMiss = (bot , player) => {
       
       botTurn(player);
 
-      if(attackState.miss === true){
+      if(attackState == null){
         e.target.style.backgroundColor = 'red';
       }else{
         e.target.style.backgroundColor = 'green';
@@ -79,11 +81,11 @@ const botTurn = (player) => {
 
     const attackState = player.receiveAttack(coords.x , coords.y);
 
-    const item = document.querySelector(`[data-x='${coords.x}'][data-y='${coords.y}']`)
+    const item = document.querySelector(`.user-cell[data-x='${coords.x}'][data-y='${coords.y}']`);
 
     if(item.style.backgroundColor === 'red' || item.style.backgroundColor === 'green') { botTurn(player);};
 
-    if(attackState.miss == true){
+    if(attackState == null){
       item.style.backgroundColor = 'red';
     }else{
       item.style.backgroundColor = 'green';

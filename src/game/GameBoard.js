@@ -13,23 +13,30 @@ class GameBoard {
   receiveAttack(x, y) {
     if (x >= this.size || y >= this.size)
       return { error: 'Attack exceeds board boundaries' };
-  
-    const hitShipIndex = this.ships.findIndex((obj) => {
-      return obj.portions[0]['x'] == x && obj.portions[0]['y'] == y;
+
+    const hitShipIndex = this.ships.findIndex((ship) => {
+      for (let i = 0; i < ship.portions.length; i++) {
+        if (ship.portions[i].x === x && ship.portions[i].y === y) {
+          return true;
+        }
+      }
+      return false;
     });
-  
-    if (hitShipIndex === -1) return { x, y, hit: false, miss: true };
-  
+
+    console.log(hitShipIndex);
+
+    if (hitShipIndex == -1) return null;
+
     const hitShip = this.ships[hitShipIndex];
-  
-    if (hitShip.portions[0].isHit === true) return { x, y, hit: false, miss: false };
-  
-    hitShip.portions[0].isHit = true;
-    hitShip.hit();
-  
-    console.log(hitShip.isSunk());
-  
-    return { x, y, hit: true, miss: false, ship: hitShip };
+
+    for (let i = 0; i < hitShip.portions.length; i++) {
+      if (hitShip.portions[i].x === x && hitShip.portions[i].y === y) {
+        hitShip.portions[i].isHit = true;
+        hitShip.hit();
+        console.log(hitShip.isSunk());
+        return hitShip;
+      }
+    }
   }
 
   placeShip(shipLength, x, y, orientation) {
@@ -73,11 +80,11 @@ class GameBoard {
         this.board[x][y + i] = 'Ship';
       }
     }
-
-    const completeShip = [];
+    
+    const ship = new Ship(shipLength);
+    this.ships.push(ship);
 
     for (let i = 0; i < shipLength; i++) {
-      const ship = new Ship(shipLength);
       const shipPortion = { isHit: false, x: null, y: null };
 
       if (orientation == 'horizontal') {
@@ -88,12 +95,21 @@ class GameBoard {
         shipPortion['y'] = y + i;
       }
 
-      this.ships.push(ship);
-      completeShip.push(ship);
       ship.portions.push(shipPortion);
     }
 
-    return completeShip;
+    return this.ships;
+  }
+
+  getHitShip(x, y) {
+    for (const ship of this.ships) {
+      for (const portion of ship.portions) {
+        if (portion.x === x && portion.y === y) {
+          return ship;
+        }
+      }
+    }
+    return null;
   }
 }
 
