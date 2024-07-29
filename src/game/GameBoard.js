@@ -25,13 +25,13 @@ class GameBoard {
 
     console.log(hitShipIndex); //remove this log
 
-    if (hitShipIndex == -1) return null;
+    if (hitShipIndex == -1) return null; // is this null or negative one
 
     const hitShip = this.ships[hitShipIndex];
 
     for (let i = 0; i < hitShip.portions.length; i++) {
       if (hitShip.portions[i].x === x && hitShip.portions[i].y === y) {
-        hitShip.portions[i].isHit = true;
+        hitShip.portions[i].isHit = true; // why not jusw use hit as true or false instead ot using miss and hit
         hitShip.hit();
         console.log(hitShip.isSunk()); //remove this console log
         return hitShip;
