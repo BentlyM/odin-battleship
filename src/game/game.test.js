@@ -42,7 +42,7 @@ describe('GameBoard', () => {
           Sunk: false,
           hits: 0,
           length: 3,
-          portions: [{ isHit: false, x: 2, y: 3 }],
+          portions: [{ isHit: false, x: 2, y: 3 }], //put all these indexes in the same value
         },
         {
           Sunk: false,
@@ -72,7 +72,7 @@ describe('GameBoard', () => {
           hits: 1,
           length: 3,
           portions: [
-            {
+            { // add the rest of the values in here from above
               isHit: true,
               x: 3,
               y: 3,
@@ -81,7 +81,7 @@ describe('GameBoard', () => {
           Sunk: false,
         })
       );
-
+        // does this make sense?? chdck over it
       expect(gameBoard.receiveAttack(5, 5)).toStrictEqual({"x": 5, "y": 5, 'miss': true});
     });
   });
