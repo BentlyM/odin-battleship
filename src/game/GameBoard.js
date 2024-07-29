@@ -15,7 +15,7 @@ class GameBoard {
       return { error: 'Attack exceeds board boundaries' };
 
     const hitShipIndex = this.ships.findIndex((ship) => {
-      for (let i = 0; i < ship.portions.length; i++) {
+      for (let i = 0; i < ship.portions.length; i++) { 
         if (ship.portions[i].x === x && ship.portions[i].y === y) {
           return true;
         }
@@ -23,7 +23,7 @@ class GameBoard {
       return false;
     });
 
-    console.log(hitShipIndex);
+    console.log(hitShipIndex); //remove this log
 
     if (hitShipIndex == -1) return null;
 
@@ -33,7 +33,7 @@ class GameBoard {
       if (hitShip.portions[i].x === x && hitShip.portions[i].y === y) {
         hitShip.portions[i].isHit = true;
         hitShip.hit();
-        console.log(hitShip.isSunk());
+        console.log(hitShip.isSunk()); //remove this console log
         return hitShip;
       }
     }
