@@ -1,0 +1,71 @@
+/* styles.css */
+
+
+body {
+    padding: 0px;
+    margin: 0px;
+    height: 100%;
+    box-sizing: border-box;
+    background-color: #354458;
+    font-family: Arial, sans-serif;
+    color: #E9E0D6;
+    font-size: 17px;
+    line-height: 1em;
+}
+
+/* Ui structure */
+
+.main-sect {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 50%;
+    gap: 30px;
+}
+
+.battleship-info {
+    margin: 10px;
+    display: flex;
+    padding: 0%;
+    list-style-type: none;
+    gap: 15px;
+}
+
+.detail {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    height: fit-content;
+    gap: 5px;
+}
+
+.info {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+}
+
+.info-box {
+    width: 10px;
+    height: 10px;
+    border: 1px dashed black;
+}
+
+#red-box {
+    background-color: red;
+}
+
+#green-box {
+    background-color: green;
+}
