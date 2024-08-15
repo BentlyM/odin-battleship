@@ -3,7 +3,7 @@
 this was a pretty cool project in webpack lol
 
 ### View in browser
-Live Server : [[placeholder]](https://bentlym.github.io/odin-battleship/)
+Live Server : [[Link]](https://bentlym.github.io/odin-battleship/)
 
 ### About the Game
 
